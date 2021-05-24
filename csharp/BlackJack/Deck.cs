@@ -5,15 +5,15 @@ namespace BlackJack
 {
     public class Deck
     {
-        public Queue<Card> Cards;
+        public List<Card> Cards;
         public Deck()
         {
-            Cards = new Queue<Card>();
+            Cards = new List<Card>();
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             {
-                for (int i = 1; i < 14; i++)
+                for (var i = 1; i < 14; i++)
                 {
-                    Cards.Enqueue(new Card() { Rank = i, Suit = suit });
+                    Cards.Add(new Card() { Rank = i, Suit = suit });
                 }
             }
 
