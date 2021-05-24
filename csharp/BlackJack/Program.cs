@@ -80,7 +80,7 @@ namespace BlackJack
             Console.ResetColor();
         }
 
-        private static string GetStringValueForCard(int cardRank)
+        public static string GetStringValueForCard(int cardRank)
         {
             switch (cardRank)
             {
