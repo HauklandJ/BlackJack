@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace BlackJack.Tests.Given_Deck
 {
-    public class When_displayingSpecialCards : Scenario
+    public class When_DisplayingSpecialCards : Scenario
     {
         private Card _jack;
         private Card _queen;

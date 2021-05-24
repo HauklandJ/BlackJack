@@ -41,13 +41,7 @@ namespace BlackJack
                 else if (loweredRead == "stand")
                 {
                     dealerTotal = CalculateHandTotal(dealerHand);
-                    while (dealerTotal < 17)
-                    {
-                        var card = GetRandomCard(deck, random);
-                        dealerHand.Add(card);
-                        dealerTotal = CalculateHandTotal(dealerHand);
-                        Console.WriteLine("Dealer hit with {0} {1}. Total is {2}", card.Suit, GetStringValueForCard(card.Rank), dealerTotal);
-                    }
+                    dealerTotal = DealerTotal(dealerTotal, deck, random, dealerHand);
                     CalculateWinner(dealerTotal, playerTotal);
                     Console.Read();
                     break;
@@ -57,6 +51,20 @@ namespace BlackJack
                     WriteColoredLine("Please enter a valid command", ConsoleColor.Blue);
                 }
             }
+        }
+
+        public static int DealerTotal(int dealerTotal, Deck deck, Random random, List<Card> dealerHand)
+        {
+            while (dealerTotal < 17)
+            {
+                var card = GetRandomCard(deck, random);
+                dealerHand.Add(card);
+                dealerTotal = CalculateHandTotal(dealerHand);
+                Console.WriteLine("Dealer hit with {0} {1}. Total is {2}", card.Suit, GetStringValueForCard(card.Rank),
+                    dealerTotal);
+            }
+
+            return dealerTotal;
         }
 
         public static bool CalculateWinner(int dealerTotal, int playerTotal)
